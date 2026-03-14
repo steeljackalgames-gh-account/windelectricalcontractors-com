@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WIND ELECTRICAL CONTRACTORS LIMITED</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a1a2e;
+      --dark:   #16213e;
+      --blue:   #0f3460;
+      --mid:    #4a5568;
+      --light:  #a0aec0;
+      --ghost:  #e2e8f0;
+      --bg:     #f8f9fa;
+      --white:  #ffffff;
+      --green:  #38a169;
+      --radius: 8px;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--navy);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      height: 68px;
+      display: flex;
+      align-items: center;
+    }
+    .main-header .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-logo {
+      color: var(--white);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+    .nav {
+      list-style: none;
+      display: flex;
+      gap: 0;
+    }
+    .nav-link {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius);
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav-link.cta {
+      background: var(--blue);
+      color: var(--white);
+      margin-left: 0.5rem;
+    }
+    .nav-link.cta:hover { background: #0d2d52; }
+
+    /* ── Container ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Hero / Cover ── */
+    .cover {
+      background: var(--navy);
+      color: var(--white);
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(15,52,96,0.7) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover .industry-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.3rem 0.9rem;
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      color: var(--light);
+    }
+    .cover h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      max-width: 700px;
+      margin-bottom: 1.2rem;
+    }
+    .cover p {
+      font-size: 1.15rem;
+      color: var(--light);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: center;
+      transition: opacity 0.15s, transform 0.1s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline-light {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: var(--white);
+      background: transparent;
+    }
+    .btn-outline-light:hover { background: rgba(255,255,255,0.08); opacity: 1; }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-outline  { background: var(--white); color: var(--blue); border: 2px solid var(--blue); }
+    .cover-footer {
+      margin-top: auto;
+      padding: 1rem 2rem 0;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cover-footer svg { opacity: 0.4; animation: bounce 2s ease infinite; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(5px); }
+    }
+
+    /* ── Why now section ── */
+    .section-why {
+      background: var(--white);
+      padding: 70px 0;
+      text-align: center;
+    }
+    .section-why h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .section-why > .container > p {
+      color: var(--mid);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .icon-box-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      list-style: none;
+      padding: 0;
+    }
+    .icon-box {
+      flex: 1 1 240px;
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.75rem;
+    }
+    .icon-box-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .icon-box-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .icon-box-body {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.55;
+    }
+
+    /* ── Packages section ── */
+    .section-packages {
+      background: var(--bg);
+      padding: 70px 0;
+    }
+    .section-packages h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .section-packages > .container > p {
+      color: var(--mid);
+      font-size: 1.05rem;
+      max-width: 560px;
+    }
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .package {
+      background: var(--white);
+      border: 1px solid var(--ghost);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .package.featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+    .package .badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .package h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .package .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0.5rem 0;
+      letter-spacing: -0.02em;
+    }
+    .package .price span { font-size: 1rem; font-weight: 400; color: var(--light); }
+    .package ul {
+      list-style: none;
+      margin: 1rem 0 1.5rem;
+      flex: 1;
+    }
+    .package ul li {
+      font-size: 0.9rem;
+      color: var(--mid);
+      padding: 0.3rem 0 0.3rem 1.4rem;
+      position: relative;
+    }
+    .package ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── Contact section ── */
+    .section-contact {
+      background: var(--white);
+      padding: 70px 0;
+    }
+    .section-contact h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .section-contact > .container > p {
+      color: var(--mid);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 540px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--ghost);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: var(--white);
+      transition: border-color 0.15s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+    .contact-form textarea { height: 120px; resize: vertical; }
+    .contact-form button {
+      align-self: flex-start;
+      padding: 0.85rem 2rem;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .contact-form button:hover { opacity: 0.85; }
+
+    /* ── Footer ── */
+    .main-footer {
+      background: var(--navy);
+      color: var(--light);
+      padding: 2.5rem 0;
+      font-size: 0.85rem;
+    }
+    .main-footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .footer-credits { line-height: 1.7; }
+    .footer-credits a { color: var(--light); text-decoration: none; }
+    .footer-credits a:hover { color: var(--white); }
+    .footer-address { color: var(--light); margin-top: 0.25rem; }
+    .footer-nav {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-nav a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-saffron {
+      width: 100%;
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Metrics bar ── */
+    .metrics-bar {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 0;
+    }
+    .metrics-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .metric {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .metric-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .metric-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+    }
+    .metric-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+      align-self: stretch;
+    }
+
+
+    /* ── btn-ghost ── */
+    .btn-ghost {
+      background: transparent;
+      color: var(--blue);
+      border: 2px solid var(--ghost);
+    }
+    .btn-outline-light {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: var(--white);
+      background: transparent;
+    }
+    .btn-outline-light:hover { background: rgba(255,255,255,0.08); opacity: 1; }
+
+    /* ── Reassurance section ── */
+    .section-reassurance {
+      background: var(--white);
+      border-bottom: 1px solid var(--ghost);
+      padding: 3.5rem 0;
+    }
+    .reassurance-intro { max-width: 700px; margin-bottom: 2.5rem; }
+    .reassurance-intro h2 {
+      font-size: 1.55rem; font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 0.75rem; color: var(--navy);
+    }
+    .reassurance-intro p {
+      color: var(--mid); font-size: 1rem; line-height: 1.7; margin-bottom: 0.75rem;
+    }
+    .transfer-cost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1.25rem; background: #f0fdf4;
+      border: 1px solid #86efac; border-radius: var(--radius);
+      padding: 0.6rem 1rem; font-size: 0.9rem;
+      color: #15803d; font-weight: 600;
+    }
+    .reassurance-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+    }
+    .reassurance-item { display: flex; flex-direction: column; gap: 0.4rem; }
+    .reassurance-item .step {
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--blue); font-weight: 700;
+    }
+    .reassurance-item h3 { font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .reassurance-item p { font-size: 0.9rem; color: var(--mid); line-height: 1.55; }
+
+    /* ── Socials section ── */
+    .section-socials { background: var(--bg); padding: 70px 0; }
+    .section-socials h2 {
+      font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 0.75rem; color: var(--navy);
+    }
+    .section-socials > .container > p {
+      color: var(--mid); font-size: 1.05rem; max-width: 600px; margin-bottom: 2rem;
+    }
+    .social-platform-list { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+    .social-chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--white); border: 1px solid var(--ghost);
+      border-radius: 2rem; padding: 0.4rem 0.9rem;
+      font-size: 0.85rem; color: var(--mid); font-weight: 500;
+    }
+    .social-chip .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #d97706;
+    }
+    .social-chip .dot.taken { background: var(--ghost); }
+    .social-callout {
+      background: var(--white); border: 1px solid var(--ghost);
+      border-radius: 12px; padding: 1.75rem 2rem; max-width: 600px;
+    }
+    .social-callout h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--navy); }
+    .social-callout p { font-size: 0.92rem; color: var(--mid); margin-bottom: 1.25rem; }
+
+    /* ── Premium / managed section ── */
+    .section-premium { background: var(--navy); color: var(--white); padding: 70px 0; }
+    .section-premium h2 {
+      font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem;
+    }
+    .section-premium > .container > p {
+      color: var(--light); font-size: 1.05rem; max-width: 600px; margin-bottom: 2.5rem;
+    }
+    .premium-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 2.5rem; max-width: 680px;
+    }
+    .premium-card .price-tbd {
+      font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.4);
+      margin-bottom: 1.5rem; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .premium-includes {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 2rem; margin-bottom: 2rem;
+    }
+    .premium-includes li {
+      list-style: none; font-size: 0.92rem; color: rgba(255,255,255,0.75);
+      padding-left: 1.3rem; position: relative;
+    }
+    .premium-includes li::before { content: "✓"; position: absolute; left: 0; color: #68d391; font-weight: 700; }
+    .premium-card p { font-size: 0.9rem; color: var(--light); margin-bottom: 1.5rem; line-height: 1.6; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 2rem; }
+      .packages { grid-template-columns: 1fr; }
+      .main-footer .container { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="main-header">
+  <div class="container">
+    <a href="/" class="brand-logo">WIND ELECTRICAL CONTRACTORS LIMITED</a>
+    <ul class="nav">
+      <li><a class="nav-link" href="#packages">Packages</a></li>
+      <li><a class="nav-link cta" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="cover">
+  <div class="industry-tag">Electrical installation</div>
+  <h1>Your company is registered. Let's get you found.</h1>
+  <p>We've held this domain for you. Before we get to that — customers in your trade search online before they call anyone.</p>
+  <a href="#packages" class="btn btn-outline-light">Claim this domain</a>
+  <div class="cover-footer">
+    Learn more
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Reassurance -->
+<section class="section-reassurance" id="about">
+  <div class="container">
+    <div class="reassurance-intro">
+      <h2>This domain has been reserved exclusively for WIND ELECTRICAL CONTRACTORS LIMITED.</h2>
+      <p>
+        Starting a business means taking a risk, putting yourself out there, and dealing with a
+        load of new challenges. We registered <strong>windelectricalcontractors.com</strong> because we understand how
+        painful it can be to miss out on the perfect name for your website, and we wanted to make
+        sure it was there when you needed it.
+      </p>
+      <p>
+        Saffron holds domains for newly incorporated Irish companies until they're ready to
+        claim them, protecting brand names until the business has had a chance to establish
+        its digital presence.
+      </p>
+      <p>
+        Our model is simple: we transfer the domain to you once we've confirmed you are who
+        you say you are. What happens next is entirely up to you: part ways with your domain
+        secured and a free report on the interest your website has already been generating,
+        or consider working with us to build your digital presence while you focus on building your business.
+      </p>
+      <div class="transfer-cost">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        €29.99
+      </div>
+    </div>
+    <div class="reassurance-grid">
+      <div class="reassurance-item">
+        <span class="step">Step 1</span>
+        <h3>Confirm your identity</h3>
+        <p>We verify you are the registered director or authorised representative of WIND ELECTRICAL CONTRACTORS LIMITED via CRO records.</p>
+      </div>
+      <div class="reassurance-item">
+        <span class="step">Step 2</span>
+        <h3>Pay the transfer fee</h3>
+        <p>€29.99 covers the transfer. Pay securely by card and we'll get the process moving immediately.</p>
+      </div>
+      <div class="reassurance-item">
+        <span class="step">Step 3</span>
+        <h3>Domain is yours</h3>
+        <p>We initiate the transfer to your registrar of choice within one business day of payment confirmation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-packages" id="packages">
+  <div class="container">
+    <h2>Your options</h2>
+    <p>Start with just the domain back, or let Saffron take care of the full digital setup.</p>
+
+    <div class="packages">
+
+      <div class="package">
+        <div class="badge">Just the domain back</div>
+        <h3>Domain Transfer</h3>
+        <div class="price">€29 <span>one-time</span></div>
+        <ul>
+          <li>Your .com domain name</li>
+          <li>DNS configuration</li>
+          <li>1 year registration</li>
+          <li>Transfer to your registrar</li>
+        </ul>
+        <a href="https://buy.stripe.com/1" class="btn btn-ghost">€29.99 — transfer domain</a>
+      </div>
+
+      <div class="package featured">
+        <div class="badge">Domain + your social handles</div>
+        <h3>Domain + Social Setup</h3>
+        <div class="price">€79 <span>one-time</span></div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Facebook page setup</li>
+          <li>Instagram handle reserved</li>
+          <li>LinkedIn company page</li>
+          <li>Consistent branding across all</li>
+        </ul>
+        <a href="https://buy.stripe.com/2" class="btn btn-primary">Claim this domain</a>
+      </div>
+
+      <div class="package">
+        <div class="badge">Hand it all over to us</div>
+        <h3>Full Digital Setup</h3>
+        <div class="price">€299 <span>one-time</span></div>
+        <ul>
+          <li>Everything in Domain + Socials</li>
+          <li>Professional website</li>
+          <li>Business email setup</li>
+          <li>Google Business profile</li>
+          <li>GDPR privacy policy</li>
+          <li>12 months hosting included</li>
+        </ul>
+        <a href="https://buy.stripe.com/3" class="btn btn-outline">Sort everything — €299</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-why">
+  <div class="container">
+    <h2>Why does this matter?</h2>
+    <p>You've done the hard work of incorporating. Here's what's at stake if the digital side waits.</p>
+    <ul class="icon-box-wrapper">
+        <li class="icon-box">
+          <span class="icon-box-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M13.7 2.3l-7 7c-.39.39-.39 1.02 0 1.41l7 7c.39.39 1.02.39 1.41 0l7-7c.39-.39.39-1.02 0-1.41l-7-7c-.39-.39-1.02-.39-1.41 0zM13 18H7v2h6v-2zm4 0h-2v2h2v-2zm-8 0H7v2h2v-2z"/></svg></span>
+          <span class="icon-box-title">Quote requests come from Google</span>
+          <span class="icon-box-body">Most people search online for tradespeople. Without a site, those jobs go to competitors.</span>
+        </li>
+        <li class="icon-box">
+          <span class="icon-box-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg></span>
+          <span class="icon-box-title">One place for all enquiries</span>
+          <span class="icon-box-body">A single contact point — website, phone, and email — keeps your pipeline clean and professional.</span>
+        </li>
+        <li class="icon-box">
+          <span class="icon-box-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></span>
+          <span class="icon-box-title">GDPR compliance from day one</span>
+          <span class="icon-box-body">Every Irish business needs a compliant privacy policy. We include one, ready to go.</span>
+        </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Social media -->
+<section class="section-socials" id="socials">
+  <div class="container">
+    <h2>Your social media handles may still be available.</h2>
+    <p>
+      Social media handles are first-come, first-served. Handles like
+      <strong>@windelectricalcontractors</strong> may still be unclaimed.
+      Once taken by someone else, reclaiming them is difficult and sometimes impossible.
+    </p>
+    <div class="social-platform-list">
+      <span class="social-chip"><span class="dot"></span> Facebook</span>
+      <span class="social-chip"><span class="dot"></span> Instagram</span>
+      <span class="social-chip"><span class="dot"></span> LinkedIn</span>
+      <span class="social-chip"><span class="dot"></span> X / Twitter</span>
+      <span class="social-chip"><span class="dot"></span> TikTok</span>
+      <span class="social-chip"><span class="dot taken"></span> Google Business (requires verified address)</span>
+    </div>
+    <div class="social-callout">
+      <h3>Not sure where to start?</h3>
+      <p>
+        Setting up and linking social profiles — consistent branding, correct contact details,
+        working links — takes longer than it looks. Our Domain + Social Setup package handles
+        all of it and hands you the logins, ready to use.
+      </p>
+      <a href="https://buy.stripe.com/2" class="btn btn-outline">Secure your handles — €79</a>
+    </div>
+  </div>
+</section>
+
+<!-- Managed / premium -->
+<section class="section-premium" id="managed">
+  <div class="container">
+    <h2>Rather focus on the business?</h2>
+    <p>
+      Starting a company comes with enough demands. If managing a website, posting to social
+      media, and keeping your Google profile current isn't where you want to spend your time,
+      Saffron can take care of all of it on a monthly basis.
+    </p>
+    <div class="premium-card">
+      <div class="price-tbd">Managed Digital — pricing coming soon</div>
+      <ul class="premium-includes">
+        <li>Professional website, built and hosted</li>
+        <li>Monthly website content updates</li>
+        <li>Social media management (3 platforms)</li>
+        <li>Google Business profile kept current</li>
+        <li>Business email, configured and supported</li>
+        <li>Monthly performance report</li>
+        <li>Direct line to your account manager</li>
+        <li>No long-term contract required</li>
+      </ul>
+      <p>
+        Register your interest and we'll be in touch once the managed service launches.
+        Early registrations receive a discounted rate.
+      </p>
+      <a href="#contact" class="btn btn-outline-light">Register interest</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-contact" id="contact">
+  <div class="container">
+    <h2>Get in touch</h2>
+    <p>Have a question about this domain or our packages? We'll get back to you promptly.</p>
+    
+        <form action="https://formspree.io/f/xpznkgvb" method="POST" class="contact-form">
+          <input type="text"  name="name"    placeholder="Your name"    required>
+          <input type="email" name="email"   placeholder="Your email"   required>
+          <textarea           name="message" placeholder="Your message" required></textarea>
+          <button type="submit">Send message</button>
+        </form>
+  </div>
+</section>
+
+<div class="metrics-bar" id="metrics">
+  <div class="container">
+    <div class="metric">
+      <span class="metric-value" id="visit-count">—</span>
+      <span class="metric-label">Page visits</span>
+    </div>
+    <div class="metric-divider"></div>
+    <div class="metric">
+      <span class="metric-value" id="countdown" data-release="2026-06-12">—</span>
+      <span class="metric-label">Days until domain release</span>
+    </div>
+    <div class="metric-divider"></div>
+    <div class="metric">
+      <span class="metric-value">12 June 2026</span>
+      <span class="metric-label">Release date</span>
+    </div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <div>
+      <div class="footer-brand">WIND ELECTRICAL CONTRACTORS LIMITED</div>
+      <div class="footer-credits">
+        &copy; 2026 WIND ELECTRICAL CONTRACTORS LIMITED<br>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <p class="footer-address">📍 1 Saint Bridgets Villas, Navan, MEATH, Ireland</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="#packages">Packages</a>
+      <a href="#socials">Social Media</a>
+      <a href="#managed">Managed</a>
+      <a href="#contact">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <div class="footer-saffron">DOMAIN SECURED FOR TRANSFER BY SAFFRON</div>
+  </div>
+</footer>
+
+<script>
+  // Countdown timer — counts down to the data-release date
+  (function() {
+    const el = document.getElementById("countdown");
+    if (!el) return;
+    const release = new Date(el.dataset.release + "T00:00:00");
+    function update() {
+      const diff = release - Date.now();
+      el.textContent = diff > 0 ? Math.ceil(diff / 86400000) : "0";
+    }
+    update();
+    setInterval(update, 60000);
+  })();
+</script>
+</body>
+</html>
